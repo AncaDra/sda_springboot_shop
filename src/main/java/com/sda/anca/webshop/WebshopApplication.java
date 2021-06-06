@@ -1,6 +1,8 @@
 package com.sda.anca.webshop;
 
 import com.sda.anca.webshop.model.Account;
+import com.sda.anca.webshop.model.Customer;
+import com.sda.anca.webshop.repository.AccountRepository;
 import com.sda.anca.webshop.service.CustomerService;
 import com.sda.anca.webshop.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ public class WebshopApplication implements CommandLineRunner {
     private CustomerService customerService;
     @Autowired
     private MailService mailService;
+    @Autowired
+    private AccountRepository accountRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(WebshopApplication.class, args);
@@ -34,11 +38,19 @@ public class WebshopApplication implements CommandLineRunner {
         //here we have the context and we can add code
         Account account1 = new Account();
         account1.setId(1L);
-        customerService.addCustomer(account1);
+
+        Customer customer= new Customer();
+        customer.setId(1L);
+
+        customerService.addCustomer(account1, customer);
 
         customerService.getCustomerAccounts().forEach(account -> System.out.println(account) );
 
         //mailService.sendMail("ancaelena.dragomir@gmail.com", "client@example.com", "mock mail subject", "mock mail content");
+
+        accountRepository.findAllByIsClosed(false).forEach(System.out::println);
+
+
     }
 
 }
