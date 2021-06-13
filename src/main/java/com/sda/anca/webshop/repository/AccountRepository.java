@@ -17,5 +17,8 @@ public interface AccountRepository extends CrudRepository<Account, Long> {
 
     List<Account> findAllByBillingAddressIsContaining(String city);
 
+    Account findByLogin(String login);
+
+
     }
 

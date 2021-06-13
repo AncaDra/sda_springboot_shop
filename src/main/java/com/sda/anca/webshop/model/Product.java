@@ -27,7 +27,7 @@ public class Product {
     private Double price;
 
     @NotBlank
-    @Pattern(regexp = "[A-Z][A-Z][A-Z] ")
+    @Pattern(regexp = "[A-Z][A-Z][A-Z]")
     @Column(name = "currency")
     private String currency;
 

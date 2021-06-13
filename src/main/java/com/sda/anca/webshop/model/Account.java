@@ -13,6 +13,10 @@ public class Account {
 
     @Column(name ="id")
     private Long id; //clasa Long
+    @Column(name="login")
+    private String login;
+    @Column(name= "password")
+    private String password;
 
     @Column(name="billing_address")
     private String billingAddress;
@@ -61,6 +65,22 @@ public class Account {
 
     public void setClosedDate(Date closedDate) {
         this.closedDate = closedDate;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
