@@ -22,7 +22,7 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/products")
     public String showProductsPage(Model model) {
         List<Product> products = productService.findAll();
         model.addAttribute("products", products);
