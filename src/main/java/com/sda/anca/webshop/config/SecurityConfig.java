@@ -22,11 +22,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //metoda pentru configurarea efectiva a elementelor care trebuie autorizate, a requesturlor care pot trece fara autorizare
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-        .authorizeRequests()
-        .antMatchers("/api/account/create").permitAll()
-        .anyRequest().authenticated()
-        .and().httpBasic();
+        http.cors().and().csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/api/login").permitAll()
+                .antMatchers("/api/user/register").permitAll()
+                .anyRequest().authenticated()
+                .and().httpBasic();
+
     }
 
     @Bean
